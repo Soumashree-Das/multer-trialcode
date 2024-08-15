@@ -15,20 +15,13 @@ router.route("/")
     .get(getAllStock)  // Add this line to fetch all stock items
     .post( upload.single("photo"), async (req, res) => {
         console.log(req.body);
+        console.log(stockPhoto.url)
         },
         addStock);   // Existing route to add a new stock item
 
 // Route to get stock details by `productId`
 router.route("/:productId")
-    .get(async (req, res) => {
-        try {
-          Images.find({}).then((data) => {
-            res.send({ status: "ok", data: data });
-          });
-        } catch (error) {
-          res.json({ status: error });
-        }
-      },getStockDetails)
+    .get(getStockDetails)
     .patch(updateStock)
     .delete(deleteStock);
 

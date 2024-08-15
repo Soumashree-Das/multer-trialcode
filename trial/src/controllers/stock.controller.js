@@ -54,11 +54,14 @@ const addStock = asyncHandler(async (req, res) => {
 
 // Controller to get details of a specific stock item
 const getStockDetails = asyncHandler(async (req, res) => {
+    console.log(req.body);
+    const photo = req.file;
+      
     const { productId } = req.params;
 
-    if (!isValidObjectId(productId)) {
-        throw new ApiError("Invalid Product ID", 400);
-    }
+    // if (!isValidObjectId(productId)) {
+    //     throw new ApiError("Invalid Product ID", 400);
+    // }
 
     const stock = await Product.findById(productId);
 
