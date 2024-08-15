@@ -14,8 +14,8 @@ function App() {
     const formData = new FormData();
     formData.append("image", image);
 
-    const result = await axios.post(
-      "http://localhost:5000/upload-image",
+    await axios.post(
+      "http://localhost:3026/",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -29,7 +29,7 @@ function App() {
   };
 
   const getImage = async () => {
-    const result = await axios.get("http://localhost:5000/get-image");
+    const result = await axios.get("http://localhost:3026/:productId");
     console.log(result);
     setAllImage(result.data.data);
   };
